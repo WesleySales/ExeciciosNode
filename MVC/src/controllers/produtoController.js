@@ -18,12 +18,6 @@ exports.buscarPorId = async (req,res) =>{
     res.json(produto)
 }
 
-//@GetMapping(value="/produtos/{id}")
-/* public ResponseEntity buscarPorId (@RequestBody Int id){
-    var produto = produtoRepository.findById(id).get();
-    return ResponseEntity.ok()body(produto);
-}*/
-
 //POST /produtos/
 exports.criarProduto = async (req,res) =>{
     const{nome,preco} = req.body;
