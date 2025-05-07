@@ -9,7 +9,10 @@
   "author": "Wesley Sales",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.14.1",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   }

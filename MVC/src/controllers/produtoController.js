@@ -3,7 +3,7 @@ const Produto = require('../models/produto');
 
 //GET /produtos
 exports.listar = async (req,res) =>{
-    const produtos = await Produto.findAll();
+    const produtos = await Produto.find();
     
     if(!produtos) return res.status(404).send('A lista está vazia')
     res.json(produtos);
@@ -17,12 +17,6 @@ exports.buscarPorId = async (req,res) =>{
 
     res.json(produto)
 }
-
-//@GetMapping(value="/produtos/{id}")
-/* public ResponseEntity buscarPorId (@RequestBody Int id){
-    var produto = produtoRepository.findById(id).get();
-    return ResponseEntity.ok()body(produto);
-}*/
 
 //POST /produtos/
 exports.criarProduto = async (req,res) =>{
