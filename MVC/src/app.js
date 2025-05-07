@@ -1,6 +1,7 @@
 const express = require('express');
-const sequelize = require('./config/database');
+const conectarDB = require('./config/database');
 const rotasProdutos = require('./routes/produtoRoutes');
+const rotasView = require('./routes/viewRoutes');
 const port = 3000;
 
 // 1. Inicializa o Express
@@ -10,10 +11,12 @@ const app = express();
 app.use(express.json());
 
 app.use('/produtos',rotasProdutos)
+app.use('/',rotasView)
 
-sequelize.sync().then(() => {
-    console.log('Banco de dados sincronizado');
-    app.listen(3000, () => {
-      console.log('Servidor rodando em http://localhost:3000');
-    });
-  });
+app.set('view engine','ejs')
+
+conectarDB();
+
+app.listen(3000, () => {
+   console.log('Servidor rodando em http://localhost:3000');
+});
