@@ -10,12 +10,12 @@ exports.listar = async (req,res) =>{
 };
 
 //GET /produtos/:id
-exports.buscarPorId = async (req,res) =>{
-    const produto = await Produto.findByPk(req.params.id);
+exports.buscarProduto = async (req,res) =>{
+    const produto = await Produto.findById(req.params.id);
 
     if(!produto) return res.status(404).send('Produto nao encontrado')
 
-    res.json(produto)
+    res.status(200).send(produto)
 }
 
 //POST /produtos/
@@ -32,7 +32,7 @@ exports.criarProduto = async (req,res) =>{
 
 //PUT /produtos/:id
 exports.editarProduto = async (req,res)=>{
-    const produto = await Produto.findByPk(req.params.id);
+    const produto = await Produto.findById(req.params.id);
     if(!produto) return res.status(404).send('Produto nao encontrado')
 
     if(!nome || !preco || isNaN(preco)){
@@ -44,14 +44,16 @@ exports.editarProduto = async (req,res)=>{
 
 }
 
-//GET /produtos/:id
+//DELETE /produtos/:id
 exports.deletarProduto = async (req,res) =>{
-    const produto = await Produto.findByPk(req.params.id);
+    const produto = await Produto.findById(req.params.id);
 
     if(!produto) return res.status(404).send('Produto nao encontrado')
 
-    await produto.destroy();
+    await produto.deleteOne();
 
     res.status(200).send('Produto deletado com sucesso')
 }
+
+
 
