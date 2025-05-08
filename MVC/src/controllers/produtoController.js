@@ -2,7 +2,7 @@
 const Produto = require('../models/produto');
 
 //GET /produtos
-exports.listar = async (req,res) =>{
+exports.listaProdutos= async (req,res) =>{
     const produtos = await Produto.find();
     
     if(!produtos) return res.status(404).send('A lista está vazia')
